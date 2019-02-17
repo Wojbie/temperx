@@ -93,7 +93,7 @@ func output() {
 		if buf, err := device.Read(-1, 1*time.Second); err == nil {
 			tmp := (float64(buf[2])*256+float64(buf[3]))/100*tf + to
 			hum := (float64(buf[4])*256+float64(buf[5]))/100*hf + ho
-			fmt.Printf("Temperature: %v, Humidity: %v\n", tmp, hum)
+			fmt.Printf(`{"temp": %v,"hum": %v}`+"\n", tmp, hum)
 		}
 	})
 }
